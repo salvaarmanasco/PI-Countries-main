@@ -1,0 +1,43 @@
+.all {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.container {
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  height: 60vh;
+  padding: 0px 20px;
+}
+
+.cardContainer {
+  display: grid;
+  width: auto;
+  height: auto;
+  background: #fff;
+  border-radius: 2px;
+  box-shadow: 1px 1px 4px 2px rgba(0, 0, 0, 0.02);
+  border-radius: 15px;
+}
+
+.header {
+  border-right: 1px solid #ddd;
+  padding: 20px;
+  text-align: center;
+}
+
+.header h2 {
+  color: blue;
+  word-wrap: break-word;
+  width: 250px;
+}
+
+.header img {
+  border-radius: 20%;
+  box-shadow: 0 0 0 8px rgba(0, 0, 0, 0.06);
+  margin: 20px 30px;
+  width: "150px";
+  height: "100px";
+}
