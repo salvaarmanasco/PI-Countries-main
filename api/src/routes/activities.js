@@ -44,13 +44,19 @@ router.post("/", async (req, res) => {
     return res.status(404).send("No se ha podido crear la actividad");
   }
 });
+//--------------------------------------------------GET--------------------------------------------------
+const getActivitiesDB = async (req, res) => {
+  const activitiesDB = Activities.findAll({ include: Country });
+  return activitiesDB;
+};
 
-// router.get("/", async (req, res) => {
-//   Activity.findAll()
-//     .then((result) => res.json(result))
-//     .catch(() =>
-//       res.status(404).json("Error con la base de datos de actividades")
-//     );
-// });
+router.get("/", async (req, res) => {
+  try {
+    let result = await getActivitiesDB();
+    return res.json(result);
+  } catch (err) {
+    return res.status(404).send("Error al buscar las actividades");
+  }
+});
 
 module.exports = router;

@@ -16,8 +16,8 @@ export default function Card({ name, flag, region, population, area, id }) {
             />
             <h2>{name}</h2>
             <h4>{region}</h4>
-            <h5>Population: {population}</h5>
-            <h5>Area: {area}</h5>
+            {/* <h5>Population: {population}</h5>
+            <h5>Area: {area}</h5> */}
             <Link to={"/countries/" + { id }}>Details</Link>
           </section>
         </div>

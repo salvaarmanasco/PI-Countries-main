@@ -3,7 +3,6 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import LandingPage from "./Components/LandingPage";
 import Home from "./Components/Home";
 import ActivityCreate from "./Components/ActivityCreate";
-import CountryDetail from "./Components/CountryDetail";
 
 function App() {
   return (
