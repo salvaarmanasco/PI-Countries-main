@@ -2,7 +2,7 @@ import React from "react";
 import styles from "../Styles/Card.module.css";
 import { Link } from "react-router-dom";
 
-export default function Card({ name, flag, region, population, area, id }) {
+export default function Card({ name, flag, region, id }) {
   return (
     <div>
       <div className={styles.container}>
@@ -14,11 +14,9 @@ export default function Card({ name, flag, region, population, area, id }) {
               width="150px"
               height="100px"
             />
-            <h2>{name}</h2>
+            <h2>{name.toUpperCase()}</h2>
             <h4>{region}</h4>
-            {/* <h5>Population: {population}</h5>
-            <h5>Area: {area}</h5> */}
-            <Link to={"/countries/" + { id }}>Details</Link>
+            <Link to={"/countries/" + id}>Detail</Link>
           </section>
         </div>
       </div>

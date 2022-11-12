@@ -22,21 +22,10 @@ router.post("/", async (req, res) => {
 
     const findCountryDB = await Country.findAll({
       where: {
-        name: { [Op.iLike]: `%${country}%` },
+        name: { [Op.or]: country },
       },
       include: Activities,
     });
-
-    if (!findCountryDB.length) {
-      return res.status(404).send(`El pais ingresado no existe`);
-    }
-    if (!created) {
-      return res
-        .status(200)
-        .send(
-          `La actividad ${name} con dificultad: ${difficulty}, duracion: ${duration} y estacion: ${season}, ya habia sido creada anteriormente `
-        );
-    }
 
     await nuevaAct.addCountry(findCountryDB);
     return res.status(200).send("La actividad fue creada");

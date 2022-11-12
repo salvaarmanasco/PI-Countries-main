@@ -1,15 +1,20 @@
 import {
   GET_COUNTRIES,
   FILTER_BY_REGION,
-  FILTER_ACTIVITIES,
   ORDER_BY_NAME,
   ORDER_BY_POPULATION,
+  GET_ACTIVITIES,
+  FILTER_ACTIVITIES,
+  POST_ACTIVITY,
+  GET_COUNTRIES_BY_ID,
+  CLEAN_DETAILS,
 } from "../Actions";
 
 const initialState = {
   countries: [],
   alwaysAllCountries: [],
   activities: [],
+  details: [],
 };
 
 function rootReducer(state = initialState, action) {
@@ -19,6 +24,20 @@ function rootReducer(state = initialState, action) {
         ...state,
         countries: action.payload,
         alwaysAllCountries: action.payload,
+      };
+    case GET_COUNTRIES_BY_ID:
+      return {
+        ...state,
+        details: action.payload,
+      };
+
+    case CLEAN_DETAILS:
+      return {
+        ...state,
+        details: action.payload,
+        alwaysAllCountries: action.payload,
+        countries: action.payload,
+        activities: action.payload,
       };
 
     case FILTER_BY_REGION:
@@ -31,8 +50,8 @@ function rootReducer(state = initialState, action) {
         ...state,
         countries: filteredCountries,
       };
+
     case ORDER_BY_NAME:
-      // const allCountriesOBN = state.alwaysAllCountries;
       const orderedCountriesBN =
         action.payload == "asc"
           ? state.countries.sort(function (a, b) {
@@ -57,8 +76,8 @@ function rootReducer(state = initialState, action) {
         ...state,
         countries: orderedCountriesBN,
       };
+
     case ORDER_BY_POPULATION:
-      // const allCountriesOBP = state.alwaysAllCountries;
       const orderedCountriesBP =
         action.payload == "stb"
           ? state.countries.sort(function (a, b) {
@@ -83,7 +102,25 @@ function rootReducer(state = initialState, action) {
         ...state,
         countries: orderedCountriesBP,
       };
+    //------------------------------------------ACTIVITIES-----------------------------------------------------//
+    case GET_ACTIVITIES:
+      return {
+        ...state,
+        activities: action.payload,
+      };
     case FILTER_ACTIVITIES:
+      const allCountriesFBA = state.alwaysAllCountries;
+      const filteredCountriesBA =
+        action.payload !== "All"
+          ? allCountriesFBA.filter((c) =>
+              c.Activities.map((a) => a.name).includes(action.payload)
+            )
+          : allCountriesFBA;
+      return {
+        ...state,
+        countries: filteredCountriesBA,
+      };
+    case POST_ACTIVITY:
       return {
         ...state,
       };

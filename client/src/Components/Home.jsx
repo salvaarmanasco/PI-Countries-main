@@ -6,6 +6,8 @@ import {
   filterCountriesByRegion,
   orderByName,
   orderByPopulation,
+  getActivities,
+  filterActivities,
 } from "../Actions";
 import { Link } from "react-router-dom";
 import Card from "./Card";
@@ -16,11 +18,15 @@ import PaginationSearch from "./PaginationSearch";
 export default function Home() {
   const dispatch = useDispatch();
   const allCountries = useSelector((state) => state.countries);
+  const allActivities = useSelector((state) => state.activities);
   //----------------------------------Pagination----------------------------------------------------------------
   const [currentPage, setCurrentPage] = useState(1);
-  const [countriesPerPage, setCountriesPerPage] = useState(9);
-  const lastCountry = currentPage * countriesPerPage;
-  const firtsCountry = lastCountry - countriesPerPage;
+  const [countriesPerPage, setCountriesPerPage] = useState(10);
+  const lastCountry = currentPage * countriesPerPage - 1;
+  const firtsCountry =
+    currentPage == 1
+      ? lastCountry - (countriesPerPage - 1)
+      : lastCountry - countriesPerPage;
   const currentCountries = allCountries.slice(firtsCountry, lastCountry);
 
   function pagination(pageNumber) {
@@ -32,9 +38,14 @@ export default function Home() {
     dispatch(getCountries());
   }, [dispatch]);
 
+  useEffect(() => {
+    dispatch(getActivities());
+  }, [dispatch]);
+
   function handleOnClick(e) {
     e.preventDefault();
     dispatch(getCountries());
+    setSearch("");
   }
   //-------------------------------Seccion Input de busqueda------------------------------------------------
   const [search, setSearch] = useState("");
@@ -54,6 +65,10 @@ export default function Home() {
   function handleFilterByRegion(e) {
     dispatch(filterCountriesByRegion(e.target.value));
   }
+  function handleFilterByActivities(e) {
+    e.preventDefault();
+    dispatch(filterActivities(e.target.value));
+  }
   //------------------------------------------Ordenamientos--------------------------------------------------------
   const [orden, setOrden] = useState("");
 
@@ -71,13 +86,19 @@ export default function Home() {
     setOrden(`Ordenado ${e.target.value}`);
   }
 
-  //------------------------------------------------------------------------------------------------------
+  const activity = allActivities;
+  let hash = {};
+  const array = activity.filter((o) =>
+    hash[o.name] ? false : (hash[o.name] = true)
+  );
+
+  //---------------------------------------------------------------------------------------------------------//
   return (
     <>
       <div className={styles.home}>
         <h1>COUNTRIES</h1>
         <Link to="/activities" className={styles.createAct}>
-          Crear Actividad
+          Create Activity
         </Link>
       </div>
       <div className={styles.inputWrapper}>
@@ -100,8 +121,17 @@ export default function Home() {
           <option value="bts">Biggers to Smallers</option>
           <option value="stb">Smallers to Biggers</option>
         </select>
-        <select>
-          <option value="act">Activities</option>
+        {/* <select onChange={(e) => handleFilterByActivities(e)}>
+          <option value="All">Activities</option>
+          {allActivities.map((e) => {
+            return <option value={e.name}>{e.name}</option>;
+          })}
+        </select> */}
+        <select onChange={(e) => handleFilterByActivities(e)}>
+          <option value="All">All Activities</option>
+          {array.map((activity) => {
+            return <option value={activity.name}> {activity.name} </option>;
+          })}
         </select>
         <select onChange={(e) => handleFilterByRegion(e)}>
           <option value="All">All</option>
@@ -125,7 +155,7 @@ export default function Home() {
           <Pagination
             countriesPerPage={countriesPerPage}
             allCountries={allCountries.length}
-            pagination={pagination}
+            paginated={pagination}
           />
         </div>
       ) : (
@@ -160,6 +190,7 @@ export default function Home() {
               <div>
                 <div>
                   <Card
+                    key={c.id}
                     name={c.name}
                     flag={c.flag}
                     region={c.region}
