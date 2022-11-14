@@ -124,3 +124,13 @@
 .inputWrapper input:focus {
   outline-color: rgb(90, 79, 239);
 }
+/* -----------------------------------------------Cards Grid--------------------------------------------------- */
+
+.wrapper {
+  /* width: 90%;
+  max-width: 1240px;
+  margin: 0 auto; */
+
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}

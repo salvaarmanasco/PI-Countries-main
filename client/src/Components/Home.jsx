@@ -121,12 +121,6 @@ export default function Home() {
           <option value="bts">Biggers to Smallers</option>
           <option value="stb">Smallers to Biggers</option>
         </select>
-        {/* <select onChange={(e) => handleFilterByActivities(e)}>
-          <option value="All">Activities</option>
-          {allActivities.map((e) => {
-            return <option value={e.name}>{e.name}</option>;
-          })}
-        </select> */}
         <select onChange={(e) => handleFilterByActivities(e)}>
           <option value="All">All Activities</option>
           {array.map((activity) => {
@@ -147,7 +141,7 @@ export default function Home() {
             handleOnClick(e);
           }}
         >
-          Recargar pagina
+          RELOAD
         </button>
       </div>
       {search.length == 0 ? (
@@ -167,41 +161,43 @@ export default function Home() {
           />
         </div>
       )}
-      {search.length
-        ? countrySearch2.map((c) => {
-            return (
-              <div>
+      <div className={styles.wrapper}>
+        {search.length
+          ? countrySearch2.map((c) => {
+              return (
                 <div>
-                  <Card
-                    name={c.name}
-                    flag={c.flag}
-                    region={c.region}
-                    population={c.population}
-                    area={c.area}
-                    id={c.id}
-                  />
+                  <div>
+                    <Card
+                      name={c.name}
+                      flag={c.flag}
+                      region={c.region}
+                      population={c.population}
+                      area={c.area}
+                      id={c.id}
+                    />
+                  </div>
                 </div>
-              </div>
-            );
-          })
-        : currentCountries &&
-          currentCountries.map((c) => {
-            return (
-              <div>
+              );
+            })
+          : currentCountries &&
+            currentCountries.map((c) => {
+              return (
                 <div>
-                  <Card
-                    key={c.id}
-                    name={c.name}
-                    flag={c.flag}
-                    region={c.region}
-                    population={c.population}
-                    area={c.area}
-                    id={c.id}
-                  />
+                  <div>
+                    <Card
+                      key={c.id}
+                      name={c.name}
+                      flag={c.flag}
+                      region={c.region}
+                      population={c.population}
+                      area={c.area}
+                      id={c.id}
+                    />
+                  </div>
                 </div>
-              </div>
-            );
-          })}
+              );
+            })}
+      </div>
     </>
   );
 }

@@ -21,9 +21,6 @@ export default function CountryDetail(props) {
 
   useEffect(() => {
     dispatch(getCountryDetails(props.match.params.id));
-    // return () => {
-    //   dispatch(cleanDetails());
-    // };
   }, [props.match.params.id, dispatch]);
 
   const cleanSubmit = (e) => {
@@ -69,7 +66,7 @@ export default function CountryDetail(props) {
                   );
                 })
               ) : (
-                <div>hola</div>
+                <></>
               )}
             </section>
           </div>

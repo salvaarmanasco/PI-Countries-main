@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 export default function Card({ name, flag, region, id }) {
   return (
-    <div>
+    <>
       <div className={styles.container}>
         <div className={styles.cardContainer}>
           <section className={styles.header}>
@@ -20,6 +20,6 @@ export default function Card({ name, flag, region, id }) {
           </section>
         </div>
       </div>
-    </div>
+    </>
   );
 }
