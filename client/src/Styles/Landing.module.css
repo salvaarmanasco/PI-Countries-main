@@ -4,11 +4,11 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 80px;
 }
 
 .landingPage h1 {
   color: white;
+  margin-top: 150px;
   font-family: "Noto Sans", sans-serif;
 }
 
@@ -37,4 +37,18 @@
 
 .specialButton:active {
   transform: translateY(-1px);
+}
+
+.background {
+  background-color: #143387;
+  background-repeat: repeat;
+  /* width: 100 0px; */
+  height: 800px;
+}
+
+.gif {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

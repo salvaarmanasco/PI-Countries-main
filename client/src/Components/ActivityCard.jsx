@@ -6,11 +6,11 @@ function ActivityCard(props) {
       {props && (
         <div>
           <p>
-            <b>Actividad: </b>
+            <b>Activity: </b>
             {props.name}
           </p>
           <p>
-            <b>Dificultad: </b>
+            <b>Difficulty: </b>
             {props.difficulty}
           </p>
           <p>
@@ -18,7 +18,7 @@ function ActivityCard(props) {
             {props.duration} horas
           </p>
           <p>
-            <b>Temporada: </b>
+            <b>Season: </b>
             {props.season}
           </p>
         </div>

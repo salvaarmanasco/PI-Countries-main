@@ -159,77 +159,99 @@ export function ActivityCreate() {
         <div className={styles.cardContainer}>
           <form onSubmit={(e) => handleSubmit(e)}>
             <div className={styles.header}>
-              <label>Name</label>
-              <input
-                type="text"
-                name="name"
-                value={input.name}
-                onChange={(e) => handleChange(e)}
-              />
+              <div>
+                <label>Name</label>
+              </div>
+              <div>
+                <input
+                  type="text"
+                  name="name"
+                  value={input.name}
+                  onChange={(e) => handleChange(e)}
+                />
+              </div>
               {errors.name && <p>{errors.name}</p>}
             </div>
             <div className={styles.header}>
-              <label>Difficulty</label>
-              <select
-                name="difficulty"
-                value={input.difficulty}
-                onChange={(e) => handleChange(e)}
-              >
-                <option value="">Choose the difficulty</option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-              </select>
+              <div>
+                <label>Difficulty</label>
+              </div>
+              <div>
+                <select
+                  name="difficulty"
+                  value={input.difficulty}
+                  onChange={(e) => handleChange(e)}
+                >
+                  <option value="">Choose the difficulty</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                </select>
+              </div>
               {errors.difficulty && <p>{errors.difficulty}</p>}
             </div>
             <div className={styles.header}>
-              <label>Duration</label>
-              <input
-                onChange={(e) => handleChange(e)}
-                type="number"
-                name="duration"
-                value={input.duration}
-                min="1"
-                step="1"
-                placeholder="Choose the duration"
-              />
+              <div>
+                <label>Duration (in hours)</label>
+              </div>
+              <div>
+                <input
+                  onChange={(e) => handleChange(e)}
+                  type="number"
+                  name="duration"
+                  value={input.duration}
+                  min="1"
+                  step="1"
+                  placeholder="Choose the duration"
+                />
+              </div>
               {errors.duration && <p>{errors.duration}</p>}
             </div>
             <div className={styles.header}>
-              <label>Season</label>
-              <select
-                name="season"
-                value={input.season}
-                onChange={(e) => handleChange(e)}
-              >
-                <option value="">Choose the season</option>
-                <option value="Summer">Summer</option>
-                <option value="Winter">Winter</option>
-                <option value="Autumn">Fall</option>
-                <option value="Spring">Spring</option>
-              </select>
+              <div>
+                <label>Season</label>
+              </div>
+              <div>
+                <select
+                  name="season"
+                  value={input.season}
+                  onChange={(e) => handleChange(e)}
+                >
+                  <option value="">Choose the season</option>
+                  <option value="Summer">Summer</option>
+                  <option value="Winter">Winter</option>
+                  <option value="Autumn">Fall</option>
+                  <option value="Spring">Spring</option>
+                </select>
+              </div>
               {errors.season && <p>{errors.season}</p>}
             </div>
             <div className={styles.header}>
-              <label>Country</label>
-              <select
-                name="country"
-                value={input.country}
-                onChange={(e) => handleSelectCountries(e)}
-              >
-                <option>----</option>
-                {countries.map((c, i) => (
-                  <option key={i} value={c.name}>
-                    {c.name}
-                  </option>
-                ))}
-              </select>
+              <div>
+                <label>Country</label>
+              </div>
+              <div>
+                <select
+                  name="country"
+                  value={input.country}
+                  onChange={(e) => handleSelectCountries(e)}
+                >
+                  <option>----</option>
+                  {countries.map((c, i) => (
+                    <option key={i} value={c.name}>
+                      {c.name}
+                    </option>
+                  ))}
+                </select>
+              </div>
               {errors.country && <p>{errors.country}</p>}
             </div>
             <div className={styles.buttonSubmit}>
-              <button type="submit">Submit</button>
+              <button type="submit" className={styles.tooltip}>
+                Submit
+              </button>
             </div>
           </form>
         </div>
