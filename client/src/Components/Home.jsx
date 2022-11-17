@@ -88,7 +88,7 @@ export default function Home() {
 
   const activity = allActivities;
   let hash = {};
-  const array = activity.filter((o) =>
+  const activityWithoutRepeat = activity.filter((o) =>
     hash[o.name] ? false : (hash[o.name] = true)
   );
 
@@ -123,7 +123,7 @@ export default function Home() {
         </select>
         <select onChange={(e) => handleFilterByActivities(e)}>
           <option value="All">All Activities</option>
-          {array.map((activity) => {
+          {activityWithoutRepeat.map((activity) => {
             return <option value={activity.name}> {activity.name} </option>;
           })}
         </select>
@@ -146,11 +146,13 @@ export default function Home() {
       </div>
       {search.length == 0 ? (
         <div>
-          <Pagination
-            countriesPerPage={countriesPerPage}
-            allCountries={allCountries.length}
-            paginated={pagination}
-          />
+          <div>
+            <Pagination
+              countriesPerPage={countriesPerPage}
+              allCountries={allCountries.length}
+              paginated={pagination}
+            />
+          </div>
         </div>
       ) : (
         <div>

@@ -5,10 +5,12 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-image: url("../src/Resources/world2.jpg");
-  background-position: center;
-  background-repeat: repeat-y;
+  /* background-image: url("../src/Resources/world2.jpg"); */
+  background-image: url("../src/Resources/planeta-como-la-tierra_5120x2880_xtrafondos.com.jpg");
+  /* background-position: 48% -40%; */
+  background-position: 0% -10%;
   background-color: black;
+  background-size: 100%;
 }
 
 code {
