@@ -64,10 +64,12 @@ export default function Home() {
   //------------------------------------------Filtros------------------------------------------------------------
   function handleFilterByRegion(e) {
     dispatch(filterCountriesByRegion(e.target.value));
+    setCurrentPage(1);
   }
   function handleFilterByActivities(e) {
     e.preventDefault();
     dispatch(filterActivities(e.target.value));
+    setCurrentPage(1);
   }
   //------------------------------------------Ordenamientos--------------------------------------------------------
   const [orden, setOrden] = useState("");
