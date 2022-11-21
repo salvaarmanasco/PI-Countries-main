@@ -83,9 +83,10 @@ export function ActivityCreate() {
   const handleSelectCountries = (e) => {
     setInput({
       ...input,
-      country: input.country.includes(e.target.value)
-        ? [...input.country]
-        : [...input.country, e.target.value],
+      country:
+        input.country.includes(e.target.value) || e.target.value == "----"
+          ? [...input.country]
+          : [...input.country, e.target.value],
     });
     setErrors(
       validate({
@@ -238,7 +239,7 @@ export function ActivityCreate() {
                   value={input.country}
                   onChange={(e) => handleSelectCountries(e)}
                 >
-                  <option>----</option>
+                  <option value="----">----</option>
                   {countries.map((c, i) => (
                     <option key={i} value={c.name}>
                       {c.name}
@@ -283,7 +284,7 @@ export function ActivityCreate() {
                       fill-rule="evenodd"
                     ></path>
                   </svg>
-                  <span class="tooltiptext"></span>
+                  <span className="tooltiptext"></span>
                 </button>
               </div>
             </div>

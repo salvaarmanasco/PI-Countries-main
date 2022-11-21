@@ -6,6 +6,7 @@
 
 .container {
   margin-top: 20px;
+  margin-bottom: 150px;
   display: grid;
   align-items: center;
   justify-content: center;
@@ -40,10 +41,12 @@
 }
 
 .header img {
-  border-radius: 15%;
+  border-radius: 10%;
   margin: 20px 30px;
   width: 200px;
   height: 150px;
+  border: 1px solid black;
+  padding: 0px;
 }
 
 .backButton {

@@ -5,12 +5,12 @@ import { Link } from "react-router-dom";
 export default function Card({ name, flag, region, id }) {
   return (
     <>
-      <div className={styles.container}>
+      <div className={styles.container} key={id}>
         <div className={styles.cardContainer}>
           <section className={styles.header}>
             <img
               src={flag}
-              alt="Imagen no encontrada"
+              alt="Image not found"
               width="150px"
               height="100px"
             />

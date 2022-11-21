@@ -19,21 +19,21 @@ export default function Home() {
   const dispatch = useDispatch();
   const allCountries = useSelector((state) => state.countries);
   const allActivities = useSelector((state) => state.activities);
-  //----------------------------------Pagination----------------------------------------------------------------
+  //----------------------------------Pagination--------------------------------------------------------------//
   const [currentPage, setCurrentPage] = useState(1);
   const [countriesPerPage, setCountriesPerPage] = useState(10);
-  const lastCountry = currentPage * countriesPerPage - 1;
+  const lastCountry = currentPage * countriesPerPage - 1; // 9
   const firtsCountry =
     currentPage == 1
-      ? lastCountry - (countriesPerPage - 1)
-      : lastCountry - countriesPerPage;
-  const currentCountries = allCountries.slice(firtsCountry, lastCountry);
+      ? lastCountry - (countriesPerPage - 1) // 0
+      : lastCountry - countriesPerPage; // -1
+  const currentCountries = allCountries.slice(firtsCountry, lastCountry); //0 a 9 o -1 a 9
 
   function pagination(pageNumber) {
     setCurrentPage(pageNumber);
   }
 
-  //----------------------------------------Use Effect------------------------------------------------------
+  //----------------------------------------Use Effect------------------------------------------------------//
   useEffect(() => {
     dispatch(getCountries());
   }, [dispatch]);
@@ -52,6 +52,7 @@ export default function Home() {
 
   const searcher = (e) => {
     setSearch(e.target.value);
+    setCurrentPage(1);
   };
 
   const countrySearch = !search
@@ -150,7 +151,6 @@ export default function Home() {
         <div>
           <div>
             <Pagination
-              countriesPerPage={countriesPerPage}
               allCountries={allCountries.length}
               paginated={pagination}
             />
@@ -169,8 +169,8 @@ export default function Home() {
         {search.length
           ? countrySearch2.map((c) => {
               return (
-                <div>
-                  <div>
+                <div key={c.id}>
+                  <div key={c.id}>
                     <Card
                       name={c.name}
                       flag={c.flag}
@@ -178,6 +178,7 @@ export default function Home() {
                       population={c.population}
                       area={c.area}
                       id={c.id}
+                      key={c.id}
                     />
                   </div>
                 </div>
@@ -186,8 +187,8 @@ export default function Home() {
           : currentCountries &&
             currentCountries.map((c) => {
               return (
-                <div>
-                  <div>
+                <div key={c.id}>
+                  <div key={c.id}>
                     <Card
                       key={c.id}
                       name={c.name}

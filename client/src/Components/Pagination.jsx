@@ -1,11 +1,7 @@
 import React from "react";
 import styles from "../Styles/Pagination.module.css";
 
-export default function Paginado({
-  countriesPerPage,
-  allCountries,
-  paginated,
-}) {
+export default function Paginado({ allCountries, paginated }) {
   const pageNumbers = [];
   const pageSecToFinish = allCountries - 9;
   pageNumbers.push(1);

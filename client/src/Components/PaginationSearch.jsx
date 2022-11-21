@@ -8,8 +8,8 @@ export default function Pagination({
 }) {
   const pageNumbers = [];
 
-  for (let i = 0; i <= allCountries / countriesPerPage; i++) {
-    pageNumbers.push(i + 1);
+  for (let i = 1; i <= allCountries / countriesPerPage; i++) {
+    pageNumbers.push(i);
   }
 
   return (
@@ -18,7 +18,7 @@ export default function Pagination({
         {pageNumbers &&
           pageNumbers.map((n) => (
             <li key={n}>
-              <a onClick={() => pagination(n)} className={styles.a}>
+              <a onClick={() => pagination(n)} className={styles.a} key={n}>
                 {n}
               </a>
             </li>

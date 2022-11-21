@@ -9,18 +9,11 @@ const getCountry = async () => {
   const mapCountry = await axiosCountry.data.map((c) => {
     return {
       id: c.cca3,
-      name:
-        c.name.common != null
-          ? c.name.common
-          : "No se encontro el nombre del país",
-      flag:
-        c.flags[0] !== null ? c.flags[0] : "No se encontro la bandera del país",
-      region:
-        c.region !== null ? c.region : "No se encontro la region del país",
+      name: c.name.common != null ? c.name.common : "Name not found",
+      flag: c.flags[0] !== null ? c.flags[0] : "Image not found",
+      region: c.region !== null ? c.region : "Region not found",
       capital:
-        typeof c.capital !== "undefined"
-          ? c.capital[0]
-          : "No se encontro la capital del país",
+        typeof c.capital !== "undefined" ? c.capital[0] : "Capital not found",
       subregion: c.subregion,
       area: c.area,
       population: c.population,

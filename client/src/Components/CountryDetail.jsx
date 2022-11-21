@@ -12,12 +12,6 @@ export default function CountryDetail(props) {
   const countryDetail = useSelector((state) => state.details);
 
   //-----------------------------------------------------------------------------------------------------------//
-  // activities.forEach((elemento) => {
-  //   console.log(elemento.Countries[0].id);
-  //   console.log(elemento.Countries[0].name);
-  // });
-
-  //-----------------------------------------------------------------------------------------------------------//
 
   useEffect(() => {
     dispatch(getCountryDetails(props.match.params.id));
@@ -42,7 +36,7 @@ export default function CountryDetail(props) {
         <div className={styles.container}>
           <div className={styles.cardContainer}>
             <section className={styles.header}>
-              <img src={countryDetail[0].flag} alt="Imagen no encontrada" />
+              <img src={countryDetail[0].flag} alt="Image not found" />
               <h1>{countryDetail[0].name.toUpperCase()}</h1>
               <h2>{countryDetail[0].capital}</h2>
               <h4>Region: {countryDetail[0].region}</h4>
@@ -86,22 +80,6 @@ export default function CountryDetail(props) {
           </div>
         </div>
       )}
-      {/* {countryDetail[0].Activities[0] &&
-        countryDetail[0].Activities[0].map((a) => {
-          return (
-            <div>
-              <div>
-                <ActivityCard
-                  name={a.name}
-                  duration={a.duration}
-                  difficulty={a.difficulty}
-                  id={a.id}
-                  season={a.season}
-                />
-              </div>
-            </div>
-          );
-        })} */}
     </div>
   );
 }
