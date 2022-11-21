@@ -1,0 +1,12 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans:wght@200&family=Poppins:wght@200&display=swap");
+
+.notfound {
+  display: flex;
+  color: #fff;
+  align-items: center;
+  justify-content: center;
+}
+
+.notfound h1 {
+  margin: 15px 20px 30px 20px;
+}
