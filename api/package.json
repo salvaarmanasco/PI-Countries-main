@@ -4,7 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+<<<<<<< HEAD
     "start": "node index.js",
+=======
+    "start": "node ./index.js",
+>>>>>>> c10c1a8fbdff7b3ab31bebbc5d9982fff3c4ba8f
     "test": "mocha -w ./tests/**/*.spec.js"
   },
   "author": "Henry",
