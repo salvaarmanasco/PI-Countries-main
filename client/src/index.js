@@ -7,7 +7,7 @@ import { Provider } from "react-redux";
 import { store } from "./Store";
 import axios from "axios";
 axios.defaults.baseURL =
-  "https://pi-countries-main-production-bbea.up.railway.app/";
+  "https://pi-countries-main-production-a4f9.up.railway.app/";
 
 ReactDOM.render(
   <React.StrictMode>
